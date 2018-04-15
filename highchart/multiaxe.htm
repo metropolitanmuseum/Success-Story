@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Highcharts Example</title>
+
+		<style type="text/css">
+
+		</style>
+	</head>
+	<body>
+<script src="code/highcharts.js"></script>
+<script src="code/modules/series-label.js"></script>
+<script src="code/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+
+
+		<script type="text/javascript">
+
+Highcharts.chart('container', {
+    chart: {
+        backgroundColor: '#FFFAF0',
+        zoomType: 'xy'
+    },
+    title: {
+        text: 'Expositions et visites'
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: [{
+        categories: ['2009', '2010', '2011', '2012', '2013',
+            '2014', '2015', '2016', '2017'],
+        crosshair: true
+    }],
+    yAxis: [{ // Primary yAxis
+        labels: {
+            format: '{value} Million',
+            style: {
+                color: Highcharts.getOptions().colors[1]
+            }
+        },
+        title: {
+            text: 'Visiteurs',
+            style: {
+                color: Highcharts.getOptions().colors[1]
+            }
+        },
+        opposite: true
+
+    }, { // Secondary yAxis
+        gridLineWidth: 0,
+        title: {
+            text: 'Expositions',
+            style: {
+                color: Highcharts.getOptions().colors[1]
+            }
+        },
+        labels: {
+            format: '{value}',
+            style: {
+                color: Highcharts.getOptions().colors[1]
+            }
+        }
+
+    }],
+    tooltip: {
+        shared: true
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        x: 80,
+        verticalAlign: 'top',
+        y: 55,
+        floating: true,
+        backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFAF0'
+    },
+    series: [{
+        name: 'Expositions',
+        type: 'column',
+        color: '#67CC8E',
+        yAxis: 1,
+        data: [40,42,43,55,51,68,70,68,59],
+        tooltip: {
+            valueSuffix: ''
+        }
+
+    }, {
+        name: 'Visiteurs',
+        type: 'spline',
+        color: '#373A37',
+        data: [4.7,5.2,5.6,6.2,6.3,6.3,6.3,6.7,7],
+        tooltip: {
+            valueSuffix: ' Million '
+        }
+    }]
+});
+
+
+		</script>
+	</body>
+</html>

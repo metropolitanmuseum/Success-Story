@@ -1,0 +1,383 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,700'>
+<link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+<style>
+
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        width: 960px;
+        height: 500px;
+        position: relative;
+    }
+    svg {
+        width: 100%;
+        height: 100%;
+        position: center;
+    }
+
+    path.slice{
+        stroke-width:2px;
+    }
+
+    text{
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    polyline{
+        opacity: .3;
+        stroke: black;
+        stroke-width: 2px;
+        fill: none;
+    }
+
+    .labelValue
+    {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 60%;
+        opacity: .5;
+
+    }
+
+    label {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: normal;
+    }
+
+    .toolTip {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        position: absolute;
+        display: none;
+        width: auto;
+        height: auto;
+        background: none repeat scroll 0 0 white;
+        border: 0 none;
+        border-radius: 8px 8px 8px 8px;
+        box-shadow: -3px 3px 15px #888888;
+        color: black;
+        font: 12px sans-serif;
+        padding: 5px;
+        text-align: center;
+    }
+
+
+    .legend {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 60%;
+    }
+    rect {
+        stroke-width: 2;
+    }
+
+    text {
+        font: 10px sans-serif;
+    }
+
+
+    text.value{
+        font-size: 200%;
+        fill: white;
+    }
+
+    text.label{
+        font-size: 100%;
+    }
+
+    .axis text {
+        font: 10px sans-serif;
+    }
+
+    .axis path{
+        fill: none;
+        stroke: #000;
+    }
+
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+
+    .axis .tick line {
+        stroke-width: 1;
+        stroke: rgba(0, 0, 0, 0.2);
+    }
+
+    .axisHorizontal path{
+        fill: none;
+    }
+
+    .axisHorizontal line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+
+    .axisHorizontal .tick line {
+        stroke-width: 1;
+        stroke: rgba(0, 0, 0, 0.2);
+    }
+
+    .bar {
+        fill: #67CC8E;
+        fill-opacity: 1;
+    }
+
+    .x.axis path {
+        display: none;
+    }
+
+
+</style>
+</head>
+<body>
+    <section>
+    <div><label><input type="radio" name="dataset" id="dataset" value="total" checked> Dons et legs</label></div>
+    <div><label><input type="radio" name="dataset" id="dataset" value="option1"> Fonds </label></div>
+    <div><label><input type="radio" name="dataset" id="dataset" value="option2"> Achats</label></div>
+    <div><label><input type="radio" name="dataset" id="dataset" value="option3"> Autre</label></div>
+    </section>
+    <script src="d3.v3.min.js"></script>
+<script>
+
+    datasetTotal = [
+      {label:"The Cloisters", value:8.83},
+{label:"Musical Instruments", value:34.9},
+{label:"Greek and Roman Art", value:41.7},
+{label:"Islamic Art", value:44.3},
+   {label:"The Libraries", value:45.2},
+   {label:"Ancient Near Eastern Art", value:47.9},
+    {label:"Egyptian Art", value:53.8},
+        {label:"Photographs", value:54.3},
+            {label:"Medieval Art", value:59.7},
+                {label:"Drawings and Prints", value:61.6},
+    {label:"European Sculpture and Decorative Arts", value:73.7},
+     {label:"European Paintings", value:74.2},
+      {label:"American Paintings and Sculpture", value:74.8},
+          {label:"Asian Art", value:75.6},                
+              {label:"Arms and Armor", value:78.4},
+                  {label:"Modern and Contemporary Art", value:80.3},
+    {label:"American Decorative Arts", value:83.9},  
+    {label:"Arts of Africa, Oceania, and the Americas", value:89.1},
+      {label:"Costume Institute", value:96.2},  
+    {label:"Robert Lehman Collection", value:100},
+    ];
+datasetOption2 = [
+{label:"Robert Lehman Collection", value:0.00},
+{label:"American Paintings and Sculpture", value:0.58},
+{label:"Musical Instruments", value: 0.77},
+{label:"Costume Institute", value:0.80},
+{label:"Arms and Armor", value:0.91},
+{label:"Modern and Contemporary Art", value:0.92},
+{label:"American Decorative Arts", value:1.00},
+{label:"The Cloisters", value:1.33},
+{label:"Drawings and Prints", value:1.72},
+{label:"Egyptian Art", value:2.10},
+{label:"European Sculpture and Decorative Arts", value:2.53},
+{label:"European Paintings", value:2.80},
+{label:"Arts of Africa, Oceania, and the Americas", value:2.99},
+{label:"Medieval Art", value:3.75},
+{label:"Islamic Art", value:4.00},
+{label:"Asian Art", value:4.92},
+{label:"The Libraries", value:11.68},
+{label:"Ancient Near Eastern Art", value:15.39},
+{label:"Photographs", value:30.99},
+{label:"Greek and Roman Art", value:37.52},
+];
+    datasetOption1 = [
+{label:"Robert Lehman Collection", value:0.0},
+{label:"The Libraries", value:0.0},
+{label:"The Cloisters", value:1.44},
+{label:"Costume Institute", value:2.06},
+{label:"Musical Instruments", value:2.24},
+{label:"Arts of Africa, Oceania, and the Americas", value:2.95},
+{label:"Modern and Contemporary Art", value:10.86},
+{label:"Photographs", value:11.10},
+{label:"European Paintings", value:11.96},
+{label:"American Decorative Arts", value:12.85},
+{label:"Asian Art", value:15.84},
+{label:"Arms and Armor", value:16.03},
+{label:"Greek and Roman Art", value:19.83},
+{label:"European Sculpture and Decorative Arts", value:20.80},
+{label:"American Paintings and Sculpture", value:21.93},
+{label:"Medieval Art", value:33.22},
+{label:"Drawings and Prints", value: 35.46},
+{label:"Ancient Near Eastern Art", value:36.72},
+{label:"Egyptian Art", value:43.46},
+{label:"Islamic Art", value:48.58},
+    ];
+    datasetOption3 = [
+{label:"Robert Lehman Collection", value:0.00},
+{label:"Ancient Near Eastern Art", value:0.00},
+{label:"Egyptian Art", value:0.60},
+{label:"Costume Institute", value:0.89},
+{label:"Greek and Roman Art", value:0.93},
+{label:"Drawings and Prints", value:1.17},
+{label:"American Decorative Arts", value:2.25},
+{label:"American Paintings and Sculpture", value:2.69},
+{label:"European Sculpture and Decorative Arts", value:2.97},
+{label:"Islamic Art", value:3.15},
+{label:"Medieval Art", value:3.28},
+{label:"Photographs", value:3.57},
+{label:"Asian Art", value:3.63},
+{label:"Arms and Armor", value:4.62},
+{label:"Arts of Africa, Oceania, and the Americas", value:4.91},
+{label:"Modern and Contemporary Art", value:7.94},
+{label:"European Paintings", value:10.99},
+{label:"The Libraries", value:43.15},
+{label:"Musical Instruments", value:62.01},
+{label:"The Cloisters", value:88.39},
+    ];
+
+    d3.selectAll("input").on("change", selectDataset);
+
+    function selectDataset()
+    {
+        var value = this.value;
+        if (value == "total")
+        {
+            change(datasetTotal, 0.635);
+        }
+        else if (value == "option1")
+        {
+            change(datasetOption1, 0.247);
+        }
+        else if (value == "option2")
+        {
+            change(datasetOption2, 0.060);
+        }
+        else if (value == "option3")
+        {
+            change(datasetOption3, 0.040);
+        }
+    }
+
+    var margin = {top: (parseInt(d3.select('body').style('height'), 10)/20), right: (parseInt(d3.select('body').style('width'), 10)/20), bottom: (parseInt(d3.select('body').style('height'), 10)/20), left: (parseInt(d3.select('body').style('width'), 10)/5)},
+            width = parseInt(d3.select('body').style('width'), 10) - margin.left - margin.right,
+            height = parseInt(d3.select('body').style('height'), 10) - margin.top - margin.bottom;
+
+    var div = d3.select("body").append("div").attr("class", "toolTip");
+
+    var formatPercent = d3.format("");
+
+    var y = d3.scale.ordinal()
+            .rangeRoundBands([height, 0], .2, 0.5);
+
+    var x = d3.scale.linear()
+            .range([0, width]);
+
+    var xAxis = d3.svg.axis()
+            .scale(x)
+            .tickSize(-height)
+            .orient("bottom");
+
+    var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left");
+    //.tickFormat(formatPercent);
+
+    var svg = d3.select("body").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+    d3.select("input[value=\"total\"]").property("checked", true);
+    change(datasetTotal, 0.635);
+
+    function change(dataset, mean) {
+
+        y.domain(dataset.map(function(d) { return d.label; }));
+        x.domain([0,100]);
+
+        svg.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis)
+
+        svg.select(".y.axis").remove();
+        svg.select(".x.axis").remove();
+
+        svg.append("g")
+                .attr("class", "y axis")
+                .call(yAxis)
+                .append("text")
+                .attr("transform", "rotate(0)")
+                .attr("x", 50)
+                .attr("dx", ".1em")
+                .style("text-anchor", "end")
+                .text("Taux");
+
+
+        var bar = svg.selectAll(".bar")
+                .data(dataset, function(d) { return d.label; });
+
+        // new data:
+        bar.enter().append("rect")
+                .attr("class", "bar")
+                .attr("x", function(d) { return x(d.value); })
+                .attr("y", function(d) { return y(d.label); })
+                .attr("width", function(d) { return width-x(d.value); })
+                .attr("height", y.rangeBand());
+
+        bar
+                .on("mousemove", function(d){
+                    div.style("left", d3.event.pageX+10+"px");
+                    div.style("top", d3.event.pageY-25+"px");
+                    div.style("display", "inline-block");
+                    div.html((d.label)+"<br>"+(d.value)+"%");
+                });
+        bar
+                .on("mouseout", function(d){
+                    div.style("display", "none");
+                });
+
+
+        // removed data:
+        bar.exit().remove();
+
+        // updated data:
+        bar.transition()
+                .duration(750)
+                .attr("x", function(d) { return 0; })
+                .attr("y", function(d) { return y(d.label); })
+                .attr("width", function(d) { return x(d.value); })
+                .attr("height", y.rangeBand());
+
+        svg.selectAll("line").remove()
+
+        var lineEnd = width*mean;
+
+        var line = svg.append("line")
+              .attr("x1", lineEnd)
+              .attr("x2", lineEnd)
+              .attr("y1", 0)
+              .attr("y2", height)
+              .attr("stroke-width", 2)
+              .attr("stroke", "black")
+              .attr("stroke-dasharray", "8,8");
+        line.on("mousemove", function(d){
+                    div.style("left", d3.event.pageX+10+"px");
+                    div.style("top", d3.event.pageY-25+"px");
+                    div.style("display", "inline-block");
+                    div.html("Moyenne : "+mean*100+" %");
+                });
+
+
+    };
+</script>
+</body>
+</html>

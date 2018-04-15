@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Highcharts Example</title>
+
+		<style type="text/css">
+
+		</style>
+	</head>
+	<body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="code/highcharts.js"></script>
+<script src="code/highcharts-more.js"></script>
+<script src="code/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 400px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+
+
+
+		<script type="text/javascript">
+
+Highcharts.setOptions({
+    colors: ['#67CC8E', '#FFC31E', '#ED561B', '#DDDF00', '#24CBE5', '#64E572', '#FF9655', '#FFF263', '#6AF9C4']
+});
+
+Highcharts.chart('container', {
+
+    chart: {
+        backgroundColor: '#FFFAF0',
+        polar: true,
+        type: 'area'
+    },
+
+    title: {
+        text: 'Louvre et Met',
+        x: -0
+    },
+
+    pane: {
+        size: '80%'
+    },
+
+    xAxis: {
+        categories: ['Visiteurs annuels', 'Expositions', 'Oeuvres exposées', 'Départements',
+                'Surface'],
+        tickmarkPlacement: 'on',
+        lineWidth: 0
+    },
+
+    yAxis: {
+        gridLineInterpolation: 'polygon',
+        lineWidth: 0,
+        labels: "disabled",
+        min: 0,
+        max: 1
+    },
+
+    tooltip: {
+        shared: true,
+        pointFormat: '<span>{series.name}: {point.myData}<br/>'
+    },
+
+    legend: {
+        align: 'right',
+        verticalAlign: 'top',
+        y: 70,
+        layout: 'vertical'
+    },
+
+    series: [{
+        name: 'Metropolitan Museum',
+        data: [
+            {y:0.944,
+             myData: "7 Millions de visiteurs annuels"
+            },
+            {y:1,
+             myData: "59 Expositions"
+            },
+            {y:1,
+             myData: "53 000 oeuvres exposées "
+            },
+            {y:1,
+             myData: "17 Départements "
+            },
+            {y:0.857,
+             myData: "60 000 m2"
+            }],
+        pointPlacement: 'on'
+    }, {
+        name: 'Louvre',
+        data: [
+            {y:1,
+             myData: "7.1 Millions de visiteurs <br/> "
+            },
+            {y:0.265,
+             myData: "18 Expositions <br/>"
+            },
+            {y:0.66,
+             myData: "35 000 oeuvres exposées <br/>"
+            },
+            {y:0.471,
+             myData: "8 Départements <br/>"
+            },
+            {y:1,
+             myData: "70 000 m2 <br/>"
+            }],
+        pointPlacement: 'on'
+    }]
+});
+		</script>
+	</body>
+</html>

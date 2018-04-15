@@ -1,0 +1,156 @@
+*{font-family: 'Roboto', sans-serif;}
+
+@keyframes click-wave {
+  0% {
+    height: 40px;
+    width: 40px;
+    opacity: 0.35;
+    position: relative;
+  }
+  100% {
+    height: 200px;
+    width: 200px;
+    margin-left: -80px;
+    margin-top: -80px;
+    opacity: 0;
+  }
+}
+
+.option-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  top: 13.33333px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  width: 40px;
+  transition: all 0.15s ease-out 0s;
+  background: #cbd1d8;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+  z-index: 1000;
+}
+.option-input:hover {
+  background: #67CC8E;
+}
+.option-input:checked {
+  background: #67CC8E;
+}
+.option-input:checked::before {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  content: '✔';
+  display: inline-block;
+  font-size: 26.66667px;
+  text-align: center;
+  line-height: 40px;
+}
+.option-input:checked::after {
+  -webkit-animation: click-wave 0.65s;
+  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s;
+  background: #67CC8E;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+}
+.option-input.radio {
+  border-radius: 50%;
+}
+.option-input.radio::after {
+  border-radius: 50%;
+}
+
+body {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: box;
+  background: #fffaf0;
+  color: #9faab7;
+  font-family: "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+}
+body div{
+  width:100%;
+}
+body div div{
+  width:50%;
+}
+body label {
+  display: block;
+  line-height: 40px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-gap: 10px;
+  grid-auto-flow: dense;
+  list-style: none;
+  margin: 1em auto;
+  padding: 0;
+  max-width: 800px;
+}
+
+.wrapper li.portrait {
+}
+
+.wrapper li.landscape {
+  grid-column-end: span 2;
+}
+
+.wrapper li.landscape_full {
+  grid-column-end: span 3;
+}
+
+.wrapper li.landscape_total {
+  grid-column-end: span 6;
+}
+
+.wrapper li img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/*Tooltip part*/
+
+.tooltiptext {
+   
+    max-width:100px;
+    padding:15px;
+    min-height:30px;
+    background:#fff;
+    visibility: hidden;
+    border: 1px solid black;
+    color: #000;
+    text-align: center;
+    border-radius: 6px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    word-wrap:break-word;
+}
+
+.portrait:hover .tooltiptext {
+    visibility: visible;
+}
+.landscape:hover .tooltiptext {
+    visibility: visible;
+}
+.landscape_full:hover .tooltiptext {
+    visibility: visible;
+}
