@@ -12,19 +12,21 @@
 </head>
 
 <body>
-  
+<div style="margin: 0 auto">  
 <div>
-  <div style="width: 60%;float:left;">
-    <div style="width: 50%;float:left;"></div>
-    <div style="width: 50%;float:right;">
-    <label>
-        <input type="radio" class="option-input radio" name="example" value="EgyptianRoman" checked />
+  <form>
+  <div class="row">
+    <div class="column" id ="c1">
+      <label>
+      <input type="radio" class="option-input radio" name="example" value="EgyptianRoman" checked />
         Art Égyptien et Romain
       </label>
       <label>
         <input type="radio" class="option-input radio" name="example" value="Peintures"/>
         Peintures
       </label>
+    
+    
       <label>
         <input type="radio" class="option-input radio" name="example" value="Big"/>
         Grandes Dimensions
@@ -33,19 +35,21 @@
         <input type="radio" class="option-input radio" name="example" value="American"/>
         Aile Américaine
       </label>
+    
+    
       <label>
         <input type="radio" class="option-input radio" name="example" value="Asian"/>
         Art Asiatique
       </label>
-      </div>
-  </div>
-  <div style="width: 40%;float:right;">
-    <div style="width: 50%;float:left;">
-    <label>
+    </div>
+    <div class="column" id ="c2">
+      <label>
         <input type="radio" class="option-input radio" name="example" value="Modern"/>
         Art Moderne
       </label>
-    <label>
+    
+    
+      <label>
         <input type="radio" class="option-input radio" name="example" value="Eastern"/>
         Art du Proche-Orient
       </label>
@@ -53,6 +57,8 @@
         <input type="radio" class="option-input radio" name="example" value="European"/>
         Art Européen
       </label>
+    
+    
       <label>
         <input type="radio" class="option-input radio" name="example" value="Medieval"/>
         Art Médiéval
@@ -62,22 +68,26 @@
         Armes et Armures
       </label>
   </div>
-  <div style="width: 50%;float:right;"></div>
-</div>
-  <center>
-    <label>
+  <div  id="div1">
+      <label>
         <input type="radio" class="option-input radio" name="example" value="Cream"/>
         La crème de la crème !
-    </label>
+      </label>
+  </div>
+    </div>
+    </form>
+</div>
+<div style="margin:0 auto;" >
   <div style="height:50px"></div>
-  <div>
+  <div id ="div2">
     <a href="#" class="button" onclick="courseChoice()">Validation des préférences</a>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js'></script>
   </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-<div style="width: 100%;clear:both;">
-  <h1 id="courseName"></h1>
-  <ul class="wrapper">
+<div>
+  <div style="height:50px"></div>
+  <h1 id="courseName" style="margin:0 100px"></h1>
+  <ul class="wrapper" id ="ul1">
         <li id="li1"><img id="Img1" alt=""><span id = "tooltip1" class="tooltiptext"></span></li>
         <li id="li2"><img id="Img2" alt=""><span id = "tooltip2" class="tooltiptext"></span></li>
         <li id="li3"><img id="Img3" alt=""><span id = "tooltip3" class="tooltiptext"></span></li>
@@ -94,7 +104,7 @@
 
   <script src="main.js"></script>
 </div>
-</center>
+</div>
 </div>
 
 

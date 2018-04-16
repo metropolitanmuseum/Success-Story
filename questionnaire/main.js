@@ -4,7 +4,7 @@ var course = [
 	{
 		courseName: "Art Égyptien et Romain",
 		part1: "Art Égyptien",
-		textImg1: "Fragment of a Queen's Face",
+		textImg1: 'Hippopotamus ("William")',
 		Img1: "Images/C1_Img1.jpg",
 		textImg2: "Mastaba Tomb of Perneb",
 		Img2: "Images/C1_Img2.jpg",
@@ -302,7 +302,7 @@ var course = [
 		Img3: "Images/C11_Img3.jpg",
 		textImg4: "Armour of Henry II of France",
 		Img4: "Images/C11_Img4.jpg",
-		textImg5: "Queen Mother Pendant Mask: Iyoba, 16th century",
+		textImg5: 'Hippopotamus ("William")',
 		Img5: "Images/C11_Img5.jpg",
 		textImg6: "Dancing Celestial Deity (Devata), mid-11th century",
 		Img6: "Images/C11_Img6.jpg",
