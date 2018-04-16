@@ -30,10 +30,14 @@
         margin:0 20%;
     }
     #div2 {
-        margin:0 17%;
+        margin:0 27%;
     }
     #ul1 {
       max-width: 800px;
+      margin: 0 -10%;
+    }
+    #courseName {
+      margin: 0 15%;
     }
 
 }

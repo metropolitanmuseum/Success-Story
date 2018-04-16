@@ -140,10 +140,10 @@
 </head>
 <body>
     <section>
-    <div><label><input type="radio" name="dataset" id="dataset" value="total" checked> Dons et legs</label></div>
-    <div><label><input type="radio" name="dataset" id="dataset" value="option1"> Fonds </label></div>
-    <div><label><input type="radio" name="dataset" id="dataset" value="option2"> Achats</label></div>
-    <div><label><input type="radio" name="dataset" id="dataset" value="option3"> Autres</label></div>
+    <div><label><input type="radio" name="dataset" id="dataset" value="total" checked> Gifts and Bequests</label></div>
+    <div><label><input type="radio" name="dataset" id="dataset" value="option1"> Funds </label></div>
+    <div><label><input type="radio" name="dataset" id="dataset" value="option2"> Purchases</label></div>
+    <div><label><input type="radio" name="dataset" id="dataset" value="option3"> Others</label></div>
     </section>
     <script src="d3.v3.min.js"></script>
 <script>
@@ -294,6 +294,7 @@ datasetOption2 = [
             .attr("class", "x axis")
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis);
+
     var lineEnd = width*0.635;
 
     var line2 = svg.append("line")
@@ -311,7 +312,6 @@ datasetOption2 = [
                 div.style("display", "inline-block");
                 div.html("Moyenne : "+mean*100+" %");
             });
-
 
     d3.select("input[value=\"total\"]").property("checked", true);
     change(datasetTotal, 0.635);
@@ -337,7 +337,7 @@ datasetOption2 = [
                 .attr("x", 50)
                 .attr("dx", ".1em")
                 .style("text-anchor", "end")
-                .text("Part de la collection");
+                .text("Part of the collection");
 
 
         var bar = svg.selectAll(".bar")

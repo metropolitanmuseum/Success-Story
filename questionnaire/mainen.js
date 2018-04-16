@@ -391,7 +391,7 @@ function courseChoice() {
 	var img12 = document.getElementById("Img12")
 
 	if(name == "EgyptianRoman") {
-		choice.innerHTML = course[0].courseName
+		choice.innerHTML = course[0].courseNameEn
 		tooltip1.innerHTML = course[0].textImg1
 		tooltip2.innerHTML = course[0].textImg2
 		tooltip3.innerHTML = course[0].textImg3
@@ -433,7 +433,7 @@ function courseChoice() {
 		return
 	}
 	if(name == "Peintures") {
-		choice.innerHTML = course[1].courseName
+		choice.innerHTML = course[1].courseNameEn
 		tooltip1.innerHTML = course[1].textImg1
 		tooltip2.innerHTML = course[1].textImg2
 		tooltip3.innerHTML = course[1].textImg3
@@ -474,7 +474,7 @@ function courseChoice() {
 		return
 	}
 	if(name == "Big") {
-		choice.innerHTML = course[2].courseName
+		choice.innerHTML = course[2].courseNameEn
 		tooltip1.innerHTML = course[2].textImg1
 		tooltip2.innerHTML = course[2].textImg2
 		tooltip3.innerHTML = course[2].textImg3
@@ -515,7 +515,7 @@ function courseChoice() {
 		return
 	}
 	if(name == "American") {
-		choice.innerHTML = course[3].courseName
+		choice.innerHTML = course[3].courseNameEn
 		tooltip1.innerHTML = course[3].textImg1
 		tooltip2.innerHTML = course[3].textImg2
 		tooltip3.innerHTML = course[3].textImg3
@@ -556,7 +556,7 @@ function courseChoice() {
 		return
 	}
 	if(name == "Asian") {
-		choice.innerHTML = course[4].courseName
+		choice.innerHTML = course[4].courseNameEn
 		tooltip1.innerHTML = course[4].textImg1
 		tooltip2.innerHTML = course[4].textImg2
 		tooltip3.innerHTML = course[4].textImg3
@@ -597,7 +597,7 @@ function courseChoice() {
 		return
 	}
 	if(name == "Modern") {
-		choice.innerHTML = course[5].courseName
+		choice.innerHTML = course[5].courseNameEn
 		tooltip1.innerHTML = course[5].textImg1
 		tooltip2.innerHTML = course[5].textImg2
 		tooltip3.innerHTML = course[5].textImg3
@@ -638,7 +638,7 @@ function courseChoice() {
 		return
 	}
 	if(name == "Eastern") {
-		choice.innerHTML = course[6].courseName
+		choice.innerHTML = course[6].courseNameEn
 		tooltip1.innerHTML = course[6].textImg1
 		tooltip2.innerHTML = course[6].textImg2
 		tooltip3.innerHTML = course[6].textImg3
@@ -679,7 +679,7 @@ function courseChoice() {
 		return
 	}
 	if(name == "European") {
-		choice.innerHTML = course[7].courseName
+		choice.innerHTML = course[7].courseNameEn
 		tooltip1.innerHTML = course[7].textImg1
 		tooltip2.innerHTML = course[7].textImg2
 		tooltip3.innerHTML = course[7].textImg3
@@ -721,7 +721,7 @@ function courseChoice() {
 	}
 
 	if(name == "Medieval") {
-		choice.innerHTML = course[8].courseName
+		choice.innerHTML = course[8].courseNameEn
 		tooltip1.innerHTML = course[8].textImg1
 		tooltip2.innerHTML = course[8].textImg2
 		tooltip3.innerHTML = course[8].textImg3
@@ -763,7 +763,7 @@ function courseChoice() {
 	}
 
 	if(name == "Arms") {
-		choice.innerHTML = course[9].courseName
+		choice.innerHTML = course[9].courseNameEn
 		tooltip1.innerHTML = course[9].textImg1
 		tooltip2.innerHTML = course[9].textImg2
 		tooltip3.innerHTML = course[9].textImg3
@@ -805,7 +805,7 @@ function courseChoice() {
 	}
 
 	if(name == "Cream") {
-		choice.innerHTML = course[10].courseName
+		choice.innerHTML = course[10].courseNameEn
 		tooltip1.innerHTML = course[10].textImg1
 		tooltip2.innerHTML = course[10].textImg2
 		tooltip3.innerHTML = course[10].textImg3

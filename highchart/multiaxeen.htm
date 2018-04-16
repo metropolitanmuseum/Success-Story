@@ -26,7 +26,7 @@ Highcharts.chart('container', {
         zoomType: 'xy'
     },
     title: {
-        text: 'Expositions et visites'
+        text: 'Exhibitions and visits'
     },
     subtitle: {
         text: ''
@@ -44,7 +44,7 @@ Highcharts.chart('container', {
             }
         },
         title: {
-            text: 'Visiteurs',
+            text: 'Visitors',
             style: {
                 color: Highcharts.getOptions().colors[1]
             }
@@ -54,7 +54,7 @@ Highcharts.chart('container', {
     }, { // Secondary yAxis
         gridLineWidth: 0,
         title: {
-            text: 'Expositions',
+            text: 'Exhibitions',
             style: {
                 color: Highcharts.getOptions().colors[1]
             }
@@ -80,7 +80,7 @@ Highcharts.chart('container', {
         backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFAF0'
     },
     series: [{
-        name: 'Expositions',
+        name: 'Exhibitions',
         type: 'column',
         color: '#67CC8E',
         yAxis: 1,
@@ -90,7 +90,7 @@ Highcharts.chart('container', {
         }
 
     }, {
-        name: 'Visiteurs',
+        name: 'Visitors',
         type: 'spline',
         color: '#373A37',
         data: [4.7,5.2,5.6,6.2,6.3,6.3,6.3,6.7,7],
